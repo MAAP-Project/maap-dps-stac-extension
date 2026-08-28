@@ -12,6 +12,7 @@ on generated STAC Items. It uses flat, namespaced Item Properties so the
 fields can be filtered through a STAC API.
 
 - [Item example](examples/item.json)
+- [Published GitHub Pages site](https://maap-project.github.io/maap-dps-stac-extension/)
 - [JSON Schema](json-schema/schema.json)
 - [Changelog](CHANGELOG.md)
 
