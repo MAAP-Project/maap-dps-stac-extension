@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://maap-project.github.io/maap-dps-stac-extension/v0.1.0/schema.json",
+  "title": "MAAP DPS STAC Item Extension",
+  "description": "STAC Item extension for provenance from a MAAP Data Processing Service (DPS) job.",
+  "type": "object",
+  "required": [
+    "stac_extensions",
+    "type",
+    "properties"
+  ],
+  "properties": {
+    "stac_extensions": {
+      "description": "The Item's declared STAC extensions, including this extension URI.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "contains": {
+        "const": "https://maap-project.github.io/maap-dps-stac-extension/v0.1.0/schema.json"
+      }
+    },
+    "type": {
+      "description": "STAC Items are GeoJSON Features.",
+      "const": "Feature"
+    },
+    "properties": {
+      "description": "STAC Item properties containing the required DPS provenance fields and any core or other extension fields.",
+      "type": "object",
+      "required": [
+        "maap-dps:algorithm_name",
+        "maap-dps:algorithm_version",
+        "maap-dps:username",
+        "maap-dps:tag"
+      ],
+      "properties": {
+        "maap-dps:algorithm_name": {
+          "description": "Name of the algorithm that produced the Item.",
+          "type": "string"
+        },
+        "maap-dps:algorithm_version": {
+          "description": "Version of the algorithm that produced the Item.",
+          "type": "string"
+        },
+        "maap-dps:username": {
+          "description": "Username associated with the DPS submission.",
+          "type": "string"
+        },
+        "maap-dps:tag": {
+          "description": "Tag associated with the DPS submission.",
+          "type": "string"
+        }
+      },
+      "patternProperties": {
+        "^(?!maap-dps:)": {
+          "$comment": "Allow STAC core properties and fields from other STAC extensions."
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
