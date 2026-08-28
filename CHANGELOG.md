@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Initial MAAP DPS STAC Item extension schema v0.1.0.
+- Initial MAAP DPS metadata and provenance extension schema v0.1.0, scoped to STAC Items.
 
 ### Changed
 

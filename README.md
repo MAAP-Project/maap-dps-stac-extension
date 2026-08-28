@@ -1,15 +1,16 @@
-# MAAP DPS STAC Item Extension
+# MAAP DPS Metadata and Provenance Extension
 
-- **Title:** MAAP DPS STAC Item Extension
+- **Title:** MAAP DPS Metadata and Provenance Extension
 - **Identifier:** <https://maap-project.github.io/maap-dps-stac-extension/v0.1.0/schema.json>
 - **Field Name Prefix:** `maap-dps`
 - **Scope:** Item Properties
 - **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Proposal
 - **Owner:** [MAAP-Project](https://github.com/MAAP-Project)
 
-This extension records provenance from the MAAP Data Processing Service (DPS)
-on generated STAC Items. It uses flat, namespaced Item Properties so the
-fields can be filtered through a STAC API.
+This extension defines metadata and provenance from the MAAP Data Processing
+Service (DPS). Version 0.1.0 applies these fields to generated STAC Items. It
+uses flat, namespaced Item Properties so the fields can be filtered through a
+STAC API.
 
 - [Item example](examples/item.json)
 - [Published GitHub Pages site](https://maap-project.github.io/maap-dps-stac-extension/)
