@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Initial MAAP DPS STAC Item extension schema v0.1.0.
+
 ### Changed
 
 ### Deprecated
@@ -17,4 +19,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-[Unreleased]: <https://github.com/stac-extensions/template/compare/v0.1.0...HEAD>
+[Unreleased]: <https://github.com/MAAP-Project/maap-dps-stac-extension/compare/v0.1.0...HEAD>

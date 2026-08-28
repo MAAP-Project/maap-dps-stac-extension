@@ -1,94 +1,64 @@
-# Template Extension Specification
+# MAAP DPS STAC Item Extension
 
-- **Title:** Template
-- **Identifier:** <https://stac-extensions.github.io/template/v0.1.0/schema.json>
-- **Field Name Prefix:** template
-- **Scope:** Catalog, Collection, Item
+- **Title:** MAAP DPS STAC Item Extension
+- **Identifier:** <https://maap-project.github.io/maap-dps-stac-extension/v0.1.0/schema.json>
+- **Field Name Prefix:** `maap-dps`
+- **Scope:** Item Properties
 - **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Proposal
-- **Owner**: @your-gh-handles @person2
+- **Owner:** [MAAP-Project](https://github.com/MAAP-Project)
 
-This document explains the Template Extension to the [SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC) specification.
+This extension records provenance from the MAAP Data Processing Service (DPS)
+on generated STAC Items. It uses flat, namespaced Item Properties so the
+fields can be filtered through a STAC API.
 
-This is the place to add a short introduction.
-
-- Examples:
-  - [Item example](examples/item.json): Shows the basic usage of the extension in a STAC Item
-  - [Collection example](examples/collection.json): Shows the basic usage of the extension in a STAC Collection
+- [Item example](examples/item.json)
 - [JSON Schema](json-schema/schema.json)
-- [Changelog](./CHANGELOG.md)
+- [Changelog](CHANGELOG.md)
 
 ## Fields
 
-The fields in the table below can be used in these parts of STAC documents:
+These fields are available in STAC Item `properties` objects:
 
-- [x] Catalogs
-- [x] Collections
-- [x] Item Properties (incl. Summaries in Collections)
-- [x] Assets (for both Collections and Items, incl. Item Asset Definitions in Collections and Asset Templates)
-- [x] Links (incl. Link Templates)
-- [x] Bands
+| Field Name | Type | Required | Description |
+| --- | --- | --- | --- |
+| `maap-dps:algorithm_name` | string | Yes | Name of the algorithm that produced the Item. |
+| `maap-dps:algorithm_version` | string | Yes | Version of the algorithm that produced the Item. |
+| `maap-dps:username` | string | Yes | Username associated with the DPS submission. |
+| `maap-dps:tag` | string | Yes | Tag associated with the DPS submission. |
 
-| Field Name           | Type                      | Description                                  |
-| -------------------- | ------------------------- | -------------------------------------------- |
-| template:new_field   | string                    | **REQUIRED**. Describe the required field... |
-| template:xyz         | [XYZ Object](#xyz-object) | Describe the field...                        |
-| template:another_one | \[number]                 | Describe the field...                        |
+When the extension is declared in `stac_extensions`, all four extension fields
+are required. No optional extension fields are defined in version 0.1.0. A job
+identifier is intentionally not included because this version does not have a
+verified stable source field and meaning for one.
 
-### Additional Field Information
+Properties from STAC core and other extensions remain valid alongside these
+fields. Unknown `maap-dps:` fields are not part of this version and are rejected
+by the schema.
 
-#### template:new_field
+## Versioning
 
-This is a much more detailed description of the field `template:new_field`...
+Each released schema is published at:
 
-### XYZ Object
+`https://maap-project.github.io/maap-dps-stac-extension/v{version}/schema.json`
 
-This is the introduction for the purpose and the content of the XYZ Object...
-
-| Field Name | Type   | Description                                  |
-| ---------- | ------ | -------------------------------------------- |
-| x          | number | **REQUIRED**. Describe the required field... |
-| y          | number | **REQUIRED**. Describe the required field... |
-| z          | number | **REQUIRED**. Describe the required field... |
-
-## Relation types
-
-The following types should be used as applicable `rel` types in the
-[Link Object](https://github.com/radiantearth/stac-spec/tree/master/item-spec/item-spec.md#link-object).
-
-| Type           | Description                           |
-| -------------- | ------------------------------------- |
-| fancy-rel-type | This link points to a fancy resource. |
+For example, the v0.1.0 schema is available at
+<https://maap-project.github.io/maap-dps-stac-extension/v0.1.0/schema.json>.
 
 ## Contributing
 
 All contributions are subject to the
 [STAC Specification Code of Conduct](https://github.com/radiantearth/stac-spec/blob/master/CODE_OF_CONDUCT.md).
-For contributions, please follow the
-[STAC specification contributing guide](https://github.com/radiantearth/stac-spec/blob/master/CONTRIBUTING.md) Instructions
-for running tests are copied here for convenience.
 
 ### Running tests
 
-The same checks that run as checks on PRs are part of the repository and can be run locally to verify that changes are valid.
-To run tests locally, you'll need `npm`, which is a standard part of any [node.js installation](https://nodejs.org/en/download/).
-
-First you'll need to install everything with npm once. Just navigate to the root of this repository and on
-your command line run:
+Install the Node.js dependencies once with:
 
 ```bash
 npm install
 ```
 
-Then to check markdown formatting and test the examples against the JSON schema, you can run:
+Then run the Markdown and example validation checks with:
 
 ```bash
 npm test
-```
-
-This will spit out the same texts that you see online, and you can then go and fix your markdown or examples.
-
-If the tests reveal formatting problems with the examples, you can fix them with:
-
-```bash
-npm run format-examples
 ```
