@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://maap-project.github.io/maap-dps-stac-extension/v0.1.0/schema.json",
-  "title": "MAAP DPS STAC Item Extension",
-  "description": "STAC Item extension for provenance from a MAAP Data Processing Service (DPS) job.",
+  "title": "MAAP DPS Metadata and Provenance Extension",
+  "description": "Extension for metadata and provenance from the MAAP Data Processing Service (DPS).",
   "type": "object",
   "required": [
     "stac_extensions",
