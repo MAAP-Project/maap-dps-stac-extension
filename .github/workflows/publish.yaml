@@ -2,36 +2,16 @@ name: Publish JSON Schema
 on:
   release:
     types: [published]
-  workflow_dispatch:
-    inputs:
-      version:
-        description: Schema version directory to publish
-        required: true
-        default: v0.1.0
-permissions:
-  contents: write
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Inject env variables
+        uses: rlespinasse/github-slug-action@v5.6.0
       - uses: actions/checkout@v7
-      - name: Build GitHub Pages site
-        env:
-          VERSION: ${{ github.event.release.tag_name || inputs.version }}
-        run: |
-          mkdir -p "_site/$VERSION"
-          cp json-schema/schema.json "_site/$VERSION/schema.json"
-          cat > _site/index.html <<EOF
-          <!doctype html>
-          <html lang="en">
-          <head><meta charset="utf-8"><title>MAAP DPS STAC Extension</title></head>
-          <body><h1>MAAP DPS STAC Extension</h1><p><a href="./$VERSION/schema.json">Schema $VERSION</a></p></body>
-          </html>
-          EOF
-      - name: Deploy JSON Schema for version ${{ github.event.release.tag_name || inputs.version }}
+      - name: deploy JSON Schema for version ${{ env.GITHUB_REF_SLUG }}
         uses: peaceiris/actions-gh-pages@v4.1.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: _site
-          keep_files: true
+          publish_dir: json-schema
+          destination_dir: ${{ env.GITHUB_REF_SLUG }}

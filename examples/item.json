@@ -5,36 +5,16 @@
   ],
   "type": "Feature",
   "id": "item",
-  "bbox": [
-    172.9,
-    1.3,
-    173,
-    1.4
-  ],
+  "bbox": [172.9, 1.3, 173, 1.4],
   "geometry": {
     "type": "Polygon",
     "coordinates": [
       [
-        [
-          172.9,
-          1.3
-        ],
-        [
-          173,
-          1.3
-        ],
-        [
-          173,
-          1.4
-        ],
-        [
-          172.9,
-          1.4
-        ],
-        [
-          172.9,
-          1.3
-        ]
+        [172.9, 1.3],
+        [173, 1.3],
+        [173, 1.4],
+        [172.9, 1.4],
+        [172.9, 1.3]
       ]
     ]
   },
@@ -43,8 +23,7 @@
     "maap-dps:algorithm_name": "example-algorithm",
     "maap-dps:algorithm_version": "1.0.0",
     "maap-dps:username": "example-user",
-    "maap-dps:tag": "example-tag",
-    "other-extension:property": "allowed"
+    "maap-dps:tag": "example-tag"
   },
   "links": [
     {
