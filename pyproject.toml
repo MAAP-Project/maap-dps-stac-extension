@@ -5,7 +5,7 @@ description = "PySTAC extension for MAAP DPS metadata and provenance"
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "Apache-2.0" }
-authors = [{ name = "MAAP Project" }]
+authors = [{ name = "Henry Rodman", email = "henry@developmentseed.org" }]
 dependencies = [
     "pystac-core>=1.15.2,<2",
 ]
