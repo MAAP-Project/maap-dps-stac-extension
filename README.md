@@ -39,6 +39,31 @@ Each released schema is published at:
 For example, the v0.1.0 schema is available at
 <https://maap-project.github.io/maap-dps-stac-extension/v0.1.0/schema.json>.
 
+## PySTAC extension
+
+Install this package with a PySTAC version that supports external extension
+entry points:
+
+```bash
+uv add "pystac-ext-maap-dps @ git+https://github.com/MAAP-Project/maap-dps-stac-extension.git@v0.1.0"
+```
+
+Use the extension wrapper to set the Item properties and declare the schema:
+
+```python
+from pystac.extensions.maap_dps import MaapDpsExtension
+
+MaapDpsExtension.ext(item, add_if_missing=True).apply(
+    algorithm_name="example-algorithm",
+    algorithm_version="1.0.0",
+    username="example-user",
+    tag=None,
+)
+```
+
+The installed package registers itself through PySTAC's `pystac.extensions`
+entry-point group.
+
 ## Contributing
 
 All contributions are subject to the
@@ -56,4 +81,10 @@ Then run the Markdown and example validation checks with:
 
 ```bash
 npm test
+```
+
+Run the PySTAC extension checks with:
+
+```bash
+uv run pytest
 ```
