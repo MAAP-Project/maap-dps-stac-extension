@@ -26,7 +26,7 @@ These fields are available in STAC Item `properties` objects:
 | `maap-dps:algorithm_name` | string | Yes | Name of the algorithm that produced the Item. |
 | `maap-dps:algorithm_version` | string | Yes | Version of the algorithm that produced the Item. |
 | `maap-dps:username` | string | Yes | Username associated with the DPS submission. |
-| `maap-dps:tag` | string | Yes | Tag associated with the DPS submission. |
+| `maap-dps:tag` | string or null | Yes | Tag associated with the DPS submission. |
 
 When the extension is declared in `stac_extensions`, all four extension fields
 are required. No optional extension fields are defined in version 0.1.0. A job

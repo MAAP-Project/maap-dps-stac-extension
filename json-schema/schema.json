@@ -48,7 +48,7 @@
         },
         "maap-dps:tag": {
           "description": "Tag associated with the DPS submission.",
-          "type": "string"
+          "type": ["string", "null"]
         }
       },
       "patternProperties": {
