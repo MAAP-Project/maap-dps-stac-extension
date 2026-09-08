@@ -71,10 +71,12 @@ All contributions are subject to the
 
 ### Running tests
 
-Install the Node.js dependencies once with:
+Install the Node.js and Python dependencies once with:
 
 ```bash
 npm install
+uv sync
+uv run pre-commit install
 ```
 
 Then run the Markdown and example validation checks with:
@@ -86,5 +88,6 @@ npm test
 Run the PySTAC extension checks with:
 
 ```bash
+uv run pre-commit run --all-files
 uv run pytest
 ```

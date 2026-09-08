@@ -3,8 +3,7 @@
 from datetime import datetime, timezone
 
 import pystac
-
-from pystac.extensions.maap_dps import MaapDpsExtension, SCHEMA_URI
+from pystac.extensions.maap_dps import SCHEMA_URI, MaapDpsExtension
 
 
 def test_apply_and_discover_extension() -> None:
@@ -26,4 +25,3 @@ def test_apply_and_discover_extension() -> None:
 
     pystac.EXTENSION_HOOKS.get_deprecation_message(item)
     assert SCHEMA_URI in pystac.EXTENSION_HOOKS.hooks
-

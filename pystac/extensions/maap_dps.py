@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import ClassVar, Literal
 
 from pystac.extensions.base import ExtensionManagementMixin, PropertiesExtension
 from pystac.extensions.hooks import ExtensionHooks
@@ -91,9 +91,9 @@ class MaapDpsExtension(PropertiesExtension, ExtensionManagementMixin[Item]):
 class MaapDpsExtensionHooks(ExtensionHooks):
     """Register the MAAP DPS schema URI with PySTAC."""
 
-    schema_uri = SCHEMA_URI
-    prev_extension_ids: set[str] = set()
-    stac_object_types = {STACObjectType.ITEM}
+    schema_uri: ClassVar[str] = SCHEMA_URI
+    prev_extension_ids: ClassVar[set[str]] = set()
+    stac_object_types: ClassVar[set[STACObjectType]] = {STACObjectType.ITEM}
 
 
 MAAP_DPS_EXTENSION_HOOKS: ExtensionHooks = MaapDpsExtensionHooks()
