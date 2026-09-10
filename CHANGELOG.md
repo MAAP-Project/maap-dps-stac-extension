@@ -9,14 +9,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Initial MAAP DPS metadata and provenance extension schema v0.1.0, scoped to STAC Items.
+- Define the MAAP DPS metadata and provenance schema for STAC Items.
 
-### Changed
-
-### Deprecated
-
-### Removed
-
-### Fixed
-
-[Unreleased]: <https://github.com/MAAP-Project/maap-dps-stac-extension/compare/v0.1.0...HEAD>
+[Unreleased]: <https://github.com/MAAP-Project/maap-dps-stac-extension/commits/HEAD>

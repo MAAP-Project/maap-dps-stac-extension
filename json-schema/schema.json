@@ -16,9 +16,18 @@
       "items": {
         "type": "string"
       },
-      "contains": {
-        "const": "https://maap-project.github.io/maap-dps-stac-extension/v0.1.0/schema.json"
-      }
+      "allOf": [
+        {
+          "contains": {
+            "const": "https://maap-project.github.io/maap-dps-stac-extension/v0.1.0/schema.json"
+          }
+        },
+        {
+          "contains": {
+            "const": "https://stac-extensions.github.io/processing/v1.2.0/schema.json"
+          }
+        }
+      ]
     },
     "type": {
       "description": "STAC Items are GeoJSON Features.",
@@ -28,18 +37,14 @@
       "description": "STAC Item properties containing the required DPS provenance fields and any core or other extension fields.",
       "type": "object",
       "required": [
+        "processing:version",
         "maap-dps:algorithm_name",
-        "maap-dps:algorithm_version",
         "maap-dps:username",
         "maap-dps:tag"
       ],
       "properties": {
         "maap-dps:algorithm_name": {
           "description": "Name of the algorithm that produced the Item.",
-          "type": "string"
-        },
-        "maap-dps:algorithm_version": {
-          "description": "Version of the algorithm that produced the Item.",
           "type": "string"
         },
         "maap-dps:username": {
