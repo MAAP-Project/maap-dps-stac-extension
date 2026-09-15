@@ -1,7 +1,8 @@
 {
   "stac_version": "1.1.0",
   "stac_extensions": [
-    "https://maap-project.github.io/maap-dps-stac-extension/v0.1.0/schema.json"
+    "https://maap-project.github.io/maap-dps-stac-extension/v0.1.0/schema.json",
+    "https://stac-extensions.github.io/processing/v1.2.0/schema.json"
   ],
   "type": "Feature",
   "id": "item",
@@ -41,7 +42,7 @@
   "properties": {
     "datetime": "2020-12-11T22:38:32Z",
     "maap-dps:algorithm_name": "example-algorithm",
-    "maap-dps:algorithm_version": "1.0.0",
+    "processing:version": "1.0.0",
     "maap-dps:username": "example-user",
     "maap-dps:tag": "example-tag"
   },

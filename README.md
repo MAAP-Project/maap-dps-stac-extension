@@ -23,12 +23,23 @@ These fields are available in STAC Item `properties` objects:
 | Field Name | Type | Required | Description |
 | --- | --- | --- | --- |
 | `maap-dps:algorithm_name` | string | Yes | Name of the algorithm that produced the Item. |
-| `maap-dps:algorithm_version` | string | Yes | Version of the algorithm that produced the Item. |
 | `maap-dps:username` | string | Yes | Username associated with the DPS submission. |
 | `maap-dps:tag` | string or null | Yes | Tag associated with the DPS submission. |
 
-When the extension is declared in `stac_extensions`, all four extension fields
-are required. No optional extension fields are defined in version 0.1.0. 
+When the extension is declared in `stac_extensions`, all three extension fields
+are required. No optional extension fields are defined in version 0.1.0.
+
+### Algorithm version
+
+Items must include `processing:version` from the
+[Processing extension](https://github.com/stac-extensions/processing/tree/v1.2.0)
+to record the version of the algorithm that produced the Item. This field is
+required in addition to the three MAAP DPS fields above. Its definition and
+validation belong to the Processing extension.
+
+Items must also declare
+`https://stac-extensions.github.io/processing/v1.2.0/schema.json` in
+`stac_extensions`, as shown in the [Item example](examples/item.json).
 
 ## Versioning
 
@@ -48,7 +59,7 @@ entry points:
 uv add "pystac-ext-maap-dps @ git+https://github.com/MAAP-Project/maap-dps-stac-extension.git@v0.1.0"
 ```
 
-Use the extension wrapper to set the Item properties and declare the schema:
+The wrapper writes `processing:version` and declares both required schemas:
 
 ```python
 from pystac.extensions.maap_dps import MaapDpsExtension
@@ -76,18 +87,12 @@ Install the Node.js and Python dependencies once with:
 ```bash
 npm install
 uv sync
-uv run pre-commit install
 ```
 
-Then run the Markdown and example validation checks with:
+Then run the schema tests, Markdown checks, example validation, and PySTAC
+extension checks with:
 
 ```bash
 npm test
-```
-
-Run the PySTAC extension checks with:
-
-```bash
-uv run pre-commit run --all-files
 uv run pytest
 ```

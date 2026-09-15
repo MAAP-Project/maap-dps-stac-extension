@@ -11,7 +11,10 @@ from pystac import ExtensionTypeError, Item, STACObjectType
 
 SCHEMA_URI = "https://maap-project.github.io/maap-dps-stac-extension/v0.1.0/schema.json"
 ALGORITHM_NAME_PROP = "maap-dps:algorithm_name"
-ALGORITHM_VERSION_PROP = "maap-dps:algorithm_version"
+PROCESSING_SCHEMA_URI = (
+    "https://stac-extensions.github.io/processing/v1.2.0/schema.json"
+)
+ALGORITHM_VERSION_PROP = "processing:version"
 USERNAME_PROP = "maap-dps:username"
 TAG_PROP = "maap-dps:tag"
 
@@ -37,6 +40,8 @@ class MaapDpsExtension(PropertiesExtension, ExtensionManagementMixin[Item]):
         self.algorithm_version = algorithm_version
         self.username = username
         self.tag = tag
+        if PROCESSING_SCHEMA_URI not in self.item.stac_extensions:
+            self.item.stac_extensions.append(PROCESSING_SCHEMA_URI)
 
     @property
     def algorithm_name(self) -> str | None:
