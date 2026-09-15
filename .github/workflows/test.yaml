@@ -7,8 +7,13 @@ on:
 
 permissions: {}
 
+concurrency:
+  group: test-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   test-node:
+    name: Check Markdown and Examples
     runs-on: ubuntu-latest
     permissions:
       contents: read

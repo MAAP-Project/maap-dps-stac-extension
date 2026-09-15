@@ -7,9 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-09-15
+
 ### Added
 
 - Define the MAAP DPS metadata and provenance schema for STAC Items.
 - Include a PySTAC extension package for producing Items that conform to the schema.
 
 [Unreleased]: <https://github.com/MAAP-Project/maap-dps-stac-extension/commits/HEAD>
+[0.1.0]: <https://github.com/MAAP-Project/maap-dps-stac-extension/releases/tag/v0.1.0>
