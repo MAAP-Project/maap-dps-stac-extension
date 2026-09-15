@@ -66,7 +66,7 @@ from pystac.extensions.maap_dps import MaapDpsExtension
 
 MaapDpsExtension.ext(item, add_if_missing=True).apply(
     algorithm_name="example-algorithm",
-    algorithm_version="1.0.0",
+    processing_version="1.0.0",
     username="example-user",
     tag=None,
 )

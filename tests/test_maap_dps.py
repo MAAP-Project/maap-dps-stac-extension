@@ -15,7 +15,7 @@ def test_apply_and_discover_extension() -> None:
     item = pystac.Item("example", None, None, datetime.now(timezone.utc), {})
     MaapDpsExtension.ext(item, add_if_missing=True).apply(
         algorithm_name="example-algorithm",
-        algorithm_version="1.0.0",
+        processing_version="1.0.0",
         username="example-user",
         tag=None,
     )

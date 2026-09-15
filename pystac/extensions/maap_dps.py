@@ -14,7 +14,7 @@ ALGORITHM_NAME_PROP = "maap-dps:algorithm_name"
 PROCESSING_SCHEMA_URI = (
     "https://stac-extensions.github.io/processing/v1.2.0/schema.json"
 )
-ALGORITHM_VERSION_PROP = "processing:version"
+PROCESSING_VERSION_PROP = "processing:version"
 USERNAME_PROP = "maap-dps:username"
 TAG_PROP = "maap-dps:tag"
 
@@ -31,13 +31,13 @@ class MaapDpsExtension(PropertiesExtension, ExtensionManagementMixin[Item]):
     def apply(
         self,
         algorithm_name: str,
-        algorithm_version: str,
+        processing_version: str,
         username: str,
         tag: str | None,
     ) -> None:
-        """Set the required MAAP DPS metadata properties."""
+        """Set the required MAAP DPS and Processing extension properties."""
         self.algorithm_name = algorithm_name
-        self.algorithm_version = algorithm_version
+        self.processing_version = processing_version
         self.username = username
         self.tag = tag
         if PROCESSING_SCHEMA_URI not in self.item.stac_extensions:
@@ -53,13 +53,13 @@ class MaapDpsExtension(PropertiesExtension, ExtensionManagementMixin[Item]):
         self._set_property(ALGORITHM_NAME_PROP, value)
 
     @property
-    def algorithm_version(self) -> str | None:
-        """Return the version of the algorithm that produced this Item."""
-        return self._get_property(ALGORITHM_VERSION_PROP, str)
+    def processing_version(self) -> str | None:
+        """Return the Processing extension version for this Item."""
+        return self._get_property(PROCESSING_VERSION_PROP, str)
 
-    @algorithm_version.setter
-    def algorithm_version(self, value: str | None) -> None:
-        self._set_property(ALGORITHM_VERSION_PROP, value)
+    @processing_version.setter
+    def processing_version(self, value: str | None) -> None:
+        self._set_property(PROCESSING_VERSION_PROP, value)
 
     @property
     def username(self) -> str | None:
