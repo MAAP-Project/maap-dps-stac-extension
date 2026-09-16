@@ -50,6 +50,35 @@ Each released schema is published at:
 For example, the v0.1.0 schema is available at
 <https://maap-project.github.io/maap-dps-stac-extension/v0.1.0/schema.json>.
 
+## PySTAC extension
+
+Install this package with a PySTAC version that supports external extension
+entry points:
+
+```bash
+uv add "pystac-ext-maap-dps @ git+https://github.com/MAAP-Project/maap-dps-stac-extension.git@v0.1.0"
+```
+
+The wrapper writes `processing:version` and declares both required schemas:
+
+```python
+from pystac.extensions.maap_dps import MaapDpsExtension
+
+MaapDpsExtension.ext(item, add_if_missing=True).apply(
+    algorithm_name="example-algorithm",
+    processing_version="1.0.0",
+    username="example-user",
+    tag=None,
+)
+```
+
+The `algorithm_name`, `processing_version`, and `username` properties are typed
+as `str`; reading a missing or null value raises `RequiredPropertyMissing`.
+Only `tag` accepts and returns `None`.
+
+The installed package registers itself through PySTAC's `pystac.extensions`
+entry-point group.
+
 ## Contributing
 
 All contributions are subject to the
@@ -57,14 +86,17 @@ All contributions are subject to the
 
 ### Running tests
 
-Install the Node.js dependencies once with:
+Install the Node.js and Python dependencies once with:
 
 ```bash
 npm install
+uv sync
 ```
 
-Then run the schema tests, Markdown checks, and example validation with:
+Then run the schema tests, Markdown checks, example validation, and PySTAC
+extension checks with:
 
 ```bash
 npm test
+uv run pytest
 ```
