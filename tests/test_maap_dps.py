@@ -3,6 +3,7 @@
 from datetime import datetime, timezone
 
 import pytest
+
 import pystac
 from pystac import RequiredPropertyMissing
 from pystac.extensions.maap_dps import (
