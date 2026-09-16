@@ -6,6 +6,7 @@ from typing import ClassVar, Literal
 
 from pystac.extensions.base import ExtensionManagementMixin, PropertiesExtension
 from pystac.extensions.hooks import ExtensionHooks
+from pystac.utils import get_required
 
 from pystac import ExtensionTypeError, Item, STACObjectType
 
@@ -44,31 +45,37 @@ class MaapDpsExtension(PropertiesExtension, ExtensionManagementMixin[Item]):
             self.item.stac_extensions.append(PROCESSING_SCHEMA_URI)
 
     @property
-    def algorithm_name(self) -> str | None:
+    def algorithm_name(self) -> str:
         """Return the name of the algorithm that produced this Item."""
-        return self._get_property(ALGORITHM_NAME_PROP, str)
+        return get_required(
+            self._get_property(ALGORITHM_NAME_PROP, str), self, ALGORITHM_NAME_PROP
+        )
 
     @algorithm_name.setter
-    def algorithm_name(self, value: str | None) -> None:
-        self._set_property(ALGORITHM_NAME_PROP, value)
+    def algorithm_name(self, value: str) -> None:
+        self._set_property(ALGORITHM_NAME_PROP, value, pop_if_none=False)
 
     @property
-    def processing_version(self) -> str | None:
+    def processing_version(self) -> str:
         """Return the Processing extension version for this Item."""
-        return self._get_property(PROCESSING_VERSION_PROP, str)
+        return get_required(
+            self._get_property(PROCESSING_VERSION_PROP, str),
+            self,
+            PROCESSING_VERSION_PROP,
+        )
 
     @processing_version.setter
-    def processing_version(self, value: str | None) -> None:
-        self._set_property(PROCESSING_VERSION_PROP, value)
+    def processing_version(self, value: str) -> None:
+        self._set_property(PROCESSING_VERSION_PROP, value, pop_if_none=False)
 
     @property
-    def username(self) -> str | None:
+    def username(self) -> str:
         """Return the username associated with the DPS submission."""
-        return self._get_property(USERNAME_PROP, str)
+        return get_required(self._get_property(USERNAME_PROP, str), self, USERNAME_PROP)
 
     @username.setter
-    def username(self, value: str | None) -> None:
-        self._set_property(USERNAME_PROP, value)
+    def username(self, value: str) -> None:
+        self._set_property(USERNAME_PROP, value, pop_if_none=False)
 
     @property
     def tag(self) -> str | None:

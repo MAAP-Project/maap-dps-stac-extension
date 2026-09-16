@@ -72,6 +72,10 @@ MaapDpsExtension.ext(item, add_if_missing=True).apply(
 )
 ```
 
+The `algorithm_name`, `processing_version`, and `username` properties are typed
+as `str`; reading a missing or null value raises `RequiredPropertyMissing`.
+Only `tag` accepts and returns `None`.
+
 The installed package registers itself through PySTAC's `pystac.extensions`
 entry-point group.
 
