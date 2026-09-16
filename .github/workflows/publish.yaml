@@ -6,11 +6,16 @@ on:
 
 permissions: {}
 
+concurrency:
+  group: publish-schema-${{ github.event.release.tag_name }}
+  cancel-in-progress: false
+
 jobs:
   deploy:
+    name: Publish schema
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: write # required to publish the versioned schema to gh-pages
     steps:
       - name: Inject env variables
         uses: rlespinasse/github-slug-action@e6f261660910b273384c5c42b17a0217881b217a # v5.6.0
